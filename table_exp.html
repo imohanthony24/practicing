@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel='stylesheet' href='../bootstrap4/css/bootstrap.min.css' />
+  <style>
+  .special{
+    background-color: rgba(220,20,60,.4); /*this color is crimson */
+    font-weight: bold;
+  }
+  #tab{
+    color: black;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<table id='tab' class="table table-striped">
+  <tr>
+  	<th>subject</th>
+    <th>first test</th>
+    <th>second test</th>
+    <th>exam</th>
+    <th>total</th>
+  </tr>
+  <tr id='sub1_details'>
+    <td data-subject='English Lang'>English Lang</td>
+    <td data-test1='13'>0</td>
+    <td data-test2='18'>18</td>
+    <td data-exam='55'>55</td>
+    <td data-total=''></td>
+  </tr>
+  <tr id='sub2_details'>
+    <td data-subject='Maths'>Maths</td>
+    <td data-test1='3'>3</td>
+    <td data-test2='15'>15</td>
+    <td data-exam='49'>0</td>
+    <td data-total=''></td>
+  </tr>
+</table>
+<ul class="my-list">
+   <li>
+      <a href="http://jquery.com">jQuery website</a>
+      <a href="#">second dummy</a>
+      <ul>
+         <li><a href="#css1">CSS1</a></li>
+         <li><a href="#css2">CSS2</a></li>
+         <li><a href="#css3">CSS3</a></li>
+         <li>Basic XPath</li>
+      </ul>
+   </li>
+   <li>
+      jQuery also supports
+      <ul>
+         <li>Custom selectors</li>
+         <li>Form selectors</li>
+      </ul>
+   </li>
+</ul>
+<div>
+<p>water born</p>
+</div>
+<div id='love'>
+</div>
+
+
+
+<script src='../jquery/jquery.min.js'>
+</script>
+<script src = 'sch_js.js'>
+</script>
+<script>
+	$(document).ready(function(){
+    chkout()
+    table_manip()
+
+	})
+	function table_manip(){
+		var all_tr = $("#tab tr")
+    //remove the row header
+    var all_tr = all_tr.slice(1) //we now hv elt at post 1 to the end
+    all_tr.each(function(index, elt){
+      var $this = $(this);
+      //get the first test value and run check
+      var first_test = $this.find("td").eq(1);
+      if( is_zero( first_test.text())){
+        $(first_test).text('-').addClass('special')
+      }
+      if(parseInt(first_test.text()) < 10){
+        $(first_test).addClass('special')
+      }
+
+      var second_test = $this.find("td").eq(2)
+      if( is_zero(second_test.text())){
+        $(second_test).text('-').addClass('special')
+      }
+      if( parseInt(second_test.text()) < 10 ){
+        $(second_test).addClass('special')
+      }
+
+      // var second_test_val = (parseInt(second_test.text()))
+      // console.log($this)
+      // if(second_test_val <= 10){
+      //   $(second_test).addClass('special');
+      //   //$this.addClass('table-warning'); 
+      // }
+
+      var exam_score = $this.find("td").eq(3);
+      if( is_zero(exam_score.text())){
+        $(exam_score).text('-').addClass('special')
+      }
+
+
+    })
+
+
+	}
+
+  function is_zero(val)
+  {
+    res = false;
+    if(val === "0"){
+      res = true;
+    }
+    return res;
+  }
+</script>
+
+<!-- cr
+[tr#sub1_details]
+cr.find("td:eq(0)").text()
+"English Lang"
+cr.find("td:eq(1)").text()+cr.find("td:eq(2)").text()
+"1314"
+Number(cr.find("td:eq(1)").text())+Number(cr.find("td:eq(2)").text())
+27 
+There are 3 JavaScript methods that can be used to convert variables to numbers:
+
+The Number() method
+The parseInt() method
+The parseFloat() method
+
+var total = Number(cr.find("td:eq(1)").text())+Number(cr.find("td:eq(2)").text())+Number(cr.find("td:eq(3)").text())
+undefined
+total
+82
+cr.find("td:eq(4)").text(total)
+
+-->
+<script src="../bootstrap4/js/bootstrap.min.js"></script>
+</body>
+</html>

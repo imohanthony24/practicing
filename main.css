@@ -1,0 +1,9 @@
+#mainCanvas {
+	width: 400px;
+	height: 400px;
+	border: solid 1px black;
+}
+div#bkg-img{
+	background-image: url('colors.jpg');
+}
+/*git, node gulp babel and eslint*/

@@ -1,0 +1,9 @@
+@media print{
+	table#exp2 tr td:last-child, table#exp2 tr th:last-child{
+		display: none;
+		background-color: red;
+	}
+	body{
+		
+	}
+}
